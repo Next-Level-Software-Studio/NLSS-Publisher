@@ -1,8 +1,20 @@
 #!/usr/bin/env python3
 import tkinter, subprocess, sys
 from tkinter import messagebox
+def clean(window):
+    for widget in window.winfo_children():
+        widget.destroy()
+def mainpage():
+    clean(mainwindow)
+    button_create = tkinter.Button(mainwindow, text="Create")
+    button_create.pack(pady=5)
+global mainwindow
 mainwindow = tkinter.Tk()
 mainwindow.title("Publish")
 mainwindow.geometry("400x200")
-mainwindow.resizable(False, False)
+mainwindow.resizable(True, True)
+label = tkinter.Label(mainwindow, text="Welcome to the Publish Tool")
+label.pack(pady=20)
+button = tkinter.Button(mainwindow, text="Next page.", command=mainpage)
+button.pack(pady=10)
 mainwindow.mainloop()
